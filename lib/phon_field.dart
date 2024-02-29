@@ -1,6 +1,5 @@
 // used for pick country code
 import 'package:flutter/material.dart';
-import 'package:country_code_picker/country_code_picker.dart';
 
 class PhoneNumberTextFormFieldWidget extends StatelessWidget {
   final String? labelText;

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shopping_cart/country_widget.dart';
 import 'package:shopping_cart/custom_field.dart';
 import 'package:shopping_cart/phon_field.dart';
 
@@ -9,6 +10,9 @@ class MyHomePage extends StatelessWidget {
   TextEditingController emailController = TextEditingController();
   TextEditingController phoneController = TextEditingController();
   TextEditingController addressController = TextEditingController();
+  TextEditingController countryController = TextEditingController();
+  TextEditingController cityController = TextEditingController();
+  TextEditingController postalCodeController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -42,7 +46,7 @@ class MyHomePage extends StatelessWidget {
                 ),
                 CustomTextFormField(
                   // isReadOnly: !controller.screenParameter!.isEmail,
-                  isReadOnly: true,
+
                   controller: emailController,
                   labelText: 'Email Address',
                   hintText: 'Enter your email',
@@ -51,7 +55,6 @@ class MyHomePage extends StatelessWidget {
                   height: 22,
                 ),
                 PhoneNumberTextFormFieldWidget(
-                  isReadOnly: true,
                   //     initialCountryCode: currentCountryCode,
                   controller: phoneController,
                   labelText: 'Phone Number',
@@ -61,41 +64,142 @@ class MyHomePage extends StatelessWidget {
                 SizedBox(
                   height: 22,
                 ),
+                SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Row(
+                    children: [
+                      Container(
+                        height: 100,
+                        width: 150,
+                        child: CustomTextFormField(
+                          controller: countryController,
+                          labelText: 'Country',
+                          onTap: () {},
+                          hintText: 'Country',
+                        ),
+                      ),
+                      SizedBox(
+                        width: 10,
+                      ),
+                      Container(
+                        height: 100,
+                        width: 100,
+                        child: CustomTextFormField(
+                          controller: cityController,
+                          labelText: 'City',
+                          onTap: () {},
+                          hintText: 'City',
+                        ),
+                      ),
+                      SizedBox(
+                        width: 10,
+                      ),
+                      Container(
+                        height: 100,
+                        width: 100,
+                        child: CustomTextFormField(
+                          controller: postalCodeController,
+                          labelText: 'Zip code',
+                          onTap: () {},
+                          hintText: 'Zip Code',
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                SizedBox(
+                  height: 12,
+                ),
                 CustomTextFormField(
                   controller: addressController,
                   labelText: 'Address',
-                  isReadOnly: true,
                   onTap: () {},
                   hintText: 'Enter your address',
                 ),
-
                 SizedBox(
                   height: 32,
                 ),
-                // DropdownButtonFormFieldWidget(
-                //   hintText: 'Your Country',
-                //   labelText: 'Select your country'
-                //   value: controller.selectedCountry,
-                //   items: controller.countryList,
-                //   isDense: false,
-                //   // getItemText: (p0) => p0.name,
-                //   getItemChild: controller.countryElementsList,
-                //   onChanged: (selectedItem) {
-                //     controller.selectedCountry =
-                //         selectedItem ?? UserDetailsCountry();
-                //     controller.countryEdit =
-                //         controller.userDetails.country.id != selectedItem?.id;
-                //     controller.update();
-                //     controller.editable();
-                //   },
-                // ),
-                // AppGaps.hGap24,
-                // StretchedTextButtonWidget(
-                //     onTap: controller.editActive
-                //         ? controller.onSaveChangesButtonTap
-                //         : null,
-                //     buttonText: AppLanguageTranslation
-                //         .saveChangesTransKey.toCurrentLanguage),
+                Container(
+                  height: 280,
+                  child: Card(
+                    elevation: 5,
+                    child: Padding(
+                      padding: const EdgeInsets.all(20.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Oder Summery',
+                            style: TextStyle(
+                                fontSize: 20, fontWeight: FontWeight.bold),
+                          ),
+                          Divider(),
+                          SizedBox(
+                            height: 20,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                'Subtotal',
+                                style: TextStyle(
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.grey),
+                              ),
+                              Text(
+                                r'$600',
+                                style: TextStyle(
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.grey),
+                              ),
+                            ],
+                          ),
+                          SizedBox(
+                            height: 15,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                'Discount',
+                                style: TextStyle(
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.grey),
+                              ),
+                              Text(
+                                r'$0',
+                                style: TextStyle(
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.grey),
+                              ),
+                            ],
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Divider(),
+                          Text(
+                            'Total',
+                            style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black),
+                          ),
+                          Container(
+                            height: 50,
+                            width: 360,
+                            child: ElevatedButton(
+                                onPressed: () {}, child: Text('Pay Now')),
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
+                )
               ],
             ),
           ),
