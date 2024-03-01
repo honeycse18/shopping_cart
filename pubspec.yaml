@@ -39,6 +39,7 @@ dependencies:
   country_picker: ^2.0.25
   flutter_localizations:
     sdk: flutter
+  firebase_core: ^2.25.5
    
 
 dev_dependencies:
